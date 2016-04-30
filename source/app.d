@@ -1,8 +1,8 @@
 version(OSX) {
     static if (__VERSION__ > 2070)
     {
-        mixin template NSStringTempl()
-        {
+        enum NSStringTempl = 
+        q{
             extern (Objective-C)
             interface NSString
             {
@@ -10,8 +10,8 @@ version(OSX) {
                 const(char)* UTF8String() @selector("UTF8String");
                 void release() @selector("release");
             }
-        }
-        mixin NSStringTempl;
+        };
+        mixin(NSStringTempl);
     }
 }
 
